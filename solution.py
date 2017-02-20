@@ -23,20 +23,8 @@ def naked_twins(values):
                 other_boxes.append(box)
         if len(box_list) == 2 and box_list[0] == box_list[1]:
             for other_box in other_boxes:
-                values[other_box] = values[other_box].replace(box_list[0][0], '').replace(box_list[0][1], '')
+                assign_value(values, other_box, values[other_box].replace(box_list[0][0], '').replace(box_list[0][1], ''))
     return values
-
-
-    """Eliminate values using the naked twins strategy.
-    Args:
-        values(dict): a dictionary of the form {'box_name': '123456789', ...}
-
-    Returns:
-        the values dictionary with the naked twins eliminated from peers.
-    """
-
-    # Find all instances of naked twins
-    # Eliminate the naked twins as possibilities for their peers
 
 def cross(A, B):
     return [a+b for a in A for b in B]
@@ -65,7 +53,7 @@ def eliminate(values):
     for box in solved_values:
         digit = values[box]
         for peer in peers[box]:
-            values[peer] = values[peer].replace(digit,'')
+            assign_value(values, peer, values[peer].replace(digit, ''))
     return values
 
 def only_choice(values):
@@ -73,13 +61,12 @@ def only_choice(values):
         for digit in '123456789':
             pos_boxes = [box for box in unit if digit in values[box]]
             if len(pos_boxes) == 1:
-                values[pos_boxes[0]] = digit
+                assign_value(values, pos_boxes[0], digit)
     return values
 
 def reduce_puzzle(values):
     stalled = False
     while not stalled:
-        # Check how many boxes have a determined value
         solved_values_before = len([box for box in values.keys() if len(values[box]) == 1])
 
         values = only_choice(eliminate(values))

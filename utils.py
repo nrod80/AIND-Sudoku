@@ -1,3 +1,4 @@
+# Adapted from the AIND lesson
 rows = 'ABCDEFGHI'
 cols = '123456789'
 

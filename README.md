@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: Using the naked twins technique, we are able to add an additional constraint to drastically reduce the search space of the algorithm. In this case, the constraint consists of the existence of two boxes containing the same two numbers within the same unit, meaning that no other box in the unit can have either of those two numbers. By applying this constraint to the entire board, we dramatically reduce the complexity of the problem.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: Much like the naked twins problem, to solve diagonal sudoku, we add an additional constraints to our algorithm. In this case, the additional constraints are the two diagonal units which must contain the numbers 1-9. These addiontal constraints reduce the search space, and thus the complexity, of the problem.
 
 ### Install
 
