@@ -13,6 +13,20 @@ def assign_value(values, box, value):
     return values
 
 def naked_twins(values):
+    for unit in unitlist:
+        box_list = []
+        other_boxes = []
+        for box in unit:
+            if len(values[box]) == 2:
+                box_list.append(values[box])
+            else:
+                other_boxes.append(box)
+        if len(box_list) == 2 and box_list[0] == box_list[1]:
+            for other_box in other_boxes:
+                values[other_box] = values[other_box].replace(box_list[0][0], '').replace(box_list[0][1], '')
+    return values
+
+
     """Eliminate values using the naked twins strategy.
     Args:
         values(dict): a dictionary of the form {'box_name': '123456789', ...}
